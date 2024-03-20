@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './paginas/home/home.component';
 import { PagListaVehiculoComponent } from './paginas/PagListaVehiculo/PagListaVehiculo.component';
+import { PagNotFoundComponent } from './paginas/PagNotFound/PagNotFound.component';
+import { PagVehiculoComponent } from './paginas/PagVehiculo/PagVehiculo.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,10 @@ const routes: Routes = [
     component: PagListaVehiculoComponent
   },
   {
+    path: 'vehiculos/:codigo',
+    component: PagVehiculoComponent
+  },
+  {
     path: '',
     component: HomeComponent,
     pathMatch: 'full'
@@ -20,7 +26,7 @@ const routes: Routes = [
   {
     //Para todos los paths que no cumplieron
     path: '**',
-    component: HomeComponent,
+    component: PagNotFoundComponent,
     pathMatch: 'full'
   },
 ];

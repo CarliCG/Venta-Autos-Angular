@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Vehiculo } from '../utilitarios/Modelos/Vehiculo';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,10 @@ constructor() { }
 getVehiculos(){
   return this.listavehiculos;
 }
+getVehiculo(codigo:string){
 
-private listavehiculos: Array<any> = [
+}
+private listavehiculos: Array<Vehiculo> = [
   {
     'codigo': 'A001',
     'marca': 'Toyota',
