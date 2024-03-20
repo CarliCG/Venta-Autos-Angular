@@ -43,13 +43,15 @@
           <ng-container *ngFor="let item of listavehiculos">
             <tr>
               <td><img [src]="item.foto" style="width: 80px;" *ngIf="mostrarImagen"></td>
-              <td>{{item.marca}}</td>
-              <td>{{item.modelo}}</td>
+              <td>{{item.marca| AEspacio:''}}</td>
+              <td>{{item.modelo }}</td>
               <td>{{item.ano}}</td>
               <td>{{item.color}}</td>
               <td>{{item.kilometraje}}</td>
               <td>{{item.precio | currency}}</td>
-              <td>{{item.calificacion}}</td>
+              <td>
+                <app-calificacion [calificacion]="item.calificacion" (accion)="recepcion($event)"></app-calificacion>
+              </td>
             </tr>
           </ng-container>
         </tbody>

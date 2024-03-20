@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { PagListaVehiculoComponent } from "./PagListaVehiculo.component" ;
 import { FormsModule } from "@angular/forms";
+import { UtilitariosModule } from "../../utilitarios/UtilitariosModule";
 
 @NgModule ({
     declarations:[
@@ -10,7 +11,8 @@ import { FormsModule } from "@angular/forms";
 
     imports:[
         CommonModule,
-        FormsModule
+        FormsModule,
+        UtilitariosModule
     ],
     exports:[
         PagListaVehiculoComponent
