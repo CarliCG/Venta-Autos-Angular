@@ -4,52 +4,56 @@
   </div>
 
   <div class="card-body">
-    <div class="row mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Filtro:</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <div class="row">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Filtro:</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca" [(ngModel)]="filtro">
+      </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-12">
-        <table class="table table-white">
-          <thead>
-            <tr>
-              <th>
-                <!--Funcionalidad boton-->
-                <button class="btn btn-xs" 
-                [ngClass]="{'btn-success': mostrarImagen, 'btn-warning':!mostrarImagen}"                
-                (click)="mostrar()" >
-                {{mostrarImagen ? 'Ocultar':'Mostrar'}} Imagen
-                </button>
-
-              </th>
-              <!--crear tabla-->
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Ano</th>
-              <th>Color</th> 
-              <th>Kilometraje</th>
-              <th>Precio</th>
-              <th>Calificación</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!--Contenido de la tabla de acuerdo a PagListaVehiculoComponent-->
-            <ng-container *ngFor="let item of listavehiculos">
-              <tr>
-                <td><img [src]="item.foto" style="width: 80px;" *ngIf=this.mostrarImagen></td>
-                <td>{{item.marca}}</td>
-                <td>{{item.modelo}}</td>
-                <td>{{item.ano}}</td>
-                <td>{{item.color}}</td>
-                <td>{{item.kilometraje}}</td>
-                <td>{{item.precio |currency}}</td>
-                <td>{{item.calificacion}}</td>
-              </tr>
-            </ng-container>
-          </tbody>
-        </table>
+      <div class="col-12">
+        Filtrado por: {{filtro}}
       </div>
+    </div>
+
+    <div class="col-sm-12">
+      <table class="table table-white">
+        <thead>
+          <tr>
+            <th>
+              <!-- Funcionalidad boton -->
+              <button class="btn btn-sm" [ngClass]="{'btn-success': mostrarImagen, 'btn-warning': !mostrarImagen}"
+                (click)="mostrar()">
+                {{ mostrarImagen ? 'Ocultar' : 'Mostrar' }} Imagen
+              </button>
+            </th>
+            <!-- crear tabla -->
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Año</th>
+            <th>Color</th>
+            <th>Kilometraje</th>
+            <th>Precio</th>
+            <th>Calificación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Contenido de la tabla de acuerdo a PagListaVehiculoComponent -->
+          <ng-container *ngFor="let item of listavehiculos">
+            <tr>
+              <td><img [src]="item.foto" style="width: 80px;" *ngIf="mostrarImagen"></td>
+              <td>{{item.marca}}</td>
+              <td>{{item.modelo}}</td>
+              <td>{{item.ano}}</td>
+              <td>{{item.color}}</td>
+              <td>{{item.kilometraje}}</td>
+              <td>{{item.precio | currency}}</td>
+              <td>{{item.calificacion}}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
