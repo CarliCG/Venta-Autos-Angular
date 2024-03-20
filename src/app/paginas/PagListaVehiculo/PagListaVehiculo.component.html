@@ -40,7 +40,7 @@
         </thead>
         <tbody>
           <!-- Contenido de la tabla de acuerdo a PagListaVehiculoComponent -->
-          <ng-container *ngFor="let item of listavehiculos">
+          <ng-container *ngFor="let item of listaVehiculos">
             <tr>
               <td><img [src]="item.foto" style="width: 80px;" *ngIf="mostrarImagen"></td>
               <td>{{item.marca| AEspacio:''}}</td>
