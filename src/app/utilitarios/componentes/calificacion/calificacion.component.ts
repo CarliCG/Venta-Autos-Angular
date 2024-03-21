@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output, } from '@angular/core';
   styleUrls: ['./calificacion.component.css']
 })
 export class CalificacionComponent implements OnInit {
-  @Input() calificacion: number = 0;
+  @Input() calificacion: any = 0;
   @Output() accion = new EventEmitter<any>();
   lista: Array<any> = [];
   constructor() { }

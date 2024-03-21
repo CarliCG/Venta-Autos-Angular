@@ -29,6 +29,7 @@
               </button>
             </th>
             <!-- crear tabla -->
+            <th>Codigo</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Año</th>
@@ -43,6 +44,8 @@
           <ng-container *ngFor="let item of listaVehiculos">
             <tr>
               <td><img [src]="item.foto" style="width: 80px;" *ngIf="mostrarImagen"></td>
+              <td><a [routerLink]="['/vehiculos/'+item.codigo]">{{item.codigo}}</a>
+              </td>
               <td>{{item.marca| AEspacio:''}}</td>
               <td>{{item.modelo }}</td>
               <td>{{item.ano}}</td>

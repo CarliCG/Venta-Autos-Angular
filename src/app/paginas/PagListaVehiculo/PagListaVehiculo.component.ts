@@ -9,25 +9,26 @@ import { VehiculoService } from '../../servicios/Vehiculo.service';
 })
 export class PagListaVehiculoComponent implements OnInit {
   mostrarImagen = true
-  filtro:string = "";
+  filtro: string = "";
 
-  @Input() valor:string = ''
-  listaVehiculos:Array<any> = [];
+  @Input() valor: string = ''
+  listaVehiculos: Array<any> = [];
 
   constructor(
     private vehiculoService: VehiculoService
-  ) { 
-    
+  ) {
+
   }
 
   ngOnInit() {
-    this.listaVehiculos=this.vehiculoService.getVehiculos();
+    this.listaVehiculos = this.vehiculoService.getVehiculos();
+    
   }
   mostrar() {
     this.mostrarImagen = !this.mostrarImagen
   }
-recepcion (dato:number){
-console.log('Dato: ',dato);
-}
-  
+  recepcion(dato: number) {
+    console.log('Dato: ', dato);
+  }
+
 }

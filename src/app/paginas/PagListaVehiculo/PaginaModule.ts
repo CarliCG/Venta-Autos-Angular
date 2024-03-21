@@ -3,19 +3,24 @@ import { CommonModule } from '@angular/common';
 import { PagListaVehiculoComponent } from "./PagListaVehiculo.component" ;
 import { FormsModule } from "@angular/forms";
 import { UtilitariosModule } from "../../utilitarios/UtilitariosModule";
+import { PagVehiculoComponent } from "../PagVehiculo/PagVehiculo.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule ({
     declarations:[
-        PagListaVehiculoComponent
+        PagListaVehiculoComponent,
+        PagVehiculoComponent
     ],
 
     imports:[
         CommonModule,
         FormsModule,
-        UtilitariosModule
+        UtilitariosModule,
+        RouterModule
     ],
     exports:[
-        PagListaVehiculoComponent
+        PagListaVehiculoComponent,
+        PagVehiculoComponent
     ]
 
 })

@@ -7,6 +7,6 @@ export interface Vehiculo {
     precio?:number;
     foto?:string|null;
     ano?:number;
-    calificacion?:number;
+    calificacion?:number|undefined;
 
 }

@@ -11,8 +11,12 @@ constructor() { }
 getVehiculos(){
   return this.listavehiculos;
 }
-getVehiculo(codigo:string){
-
+getVehiculo(codigo:string): Vehiculo|undefined{
+let vehiculo=this.listavehiculos.find(ele => ele.codigo === codigo);
+return vehiculo;
+}
+addvehiculo(vehiculo:Vehiculo){
+  this.listavehiculos.push(vehiculo);
 }
 private listavehiculos: Array<Vehiculo> = [
   {
