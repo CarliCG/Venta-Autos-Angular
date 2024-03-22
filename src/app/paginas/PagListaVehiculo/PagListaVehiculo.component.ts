@@ -23,8 +23,9 @@ set filtro (data:string){
   @Input() valor: string = ''
   listaVehiculos: Array<any> = [];
 
+  
   constructor(
-    private vehiculoService: VehiculoService
+    private vehiculoService: VehiculoService,
   ) {
 
   }

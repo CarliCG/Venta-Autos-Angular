@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { PagListaVehiculoComponent } from "./PagListaVehiculo.component" ;
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UtilitariosModule } from "../../utilitarios/UtilitariosModule";
 import { PagVehiculoComponent } from "../PagVehiculo/PagVehiculo.component";
 import { RouterModule } from "@angular/router";
@@ -18,7 +18,8 @@ import { PagVehiculoRegistroComponent } from "../PagVehiculoRegistro/PagVehiculo
         CommonModule,
         FormsModule,
         UtilitariosModule,
-        RouterModule
+        RouterModule,
+        ReactiveFormsModule
     ],
     exports:[
         PagListaVehiculoComponent,
