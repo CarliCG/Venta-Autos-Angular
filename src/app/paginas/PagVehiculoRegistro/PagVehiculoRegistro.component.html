@@ -1,85 +1,81 @@
-<div class="card">
-  <div class="card-header">
-    Creacion de Vehiculo
-  </div>
-  <div class="card-body">
-    <div class="row">
-
-      <div class="col-12">
-        <form [formGroup]="formulario">
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Codigo:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="staticCodigo" name="codigo:" formControlName='codigo'>
-            </div>
-            <span class="text-danger" *ngIf="formulario.controls['codigo'].errors?.required">Valor Requerido</span><br>
-            <span class="text-danger" *ngIf="formulario.controls['codigo'].errors?.codigoValidate">Ejemplo A001</span>
-          </div>
-          <br>
-          <div class="mb-3 row">
-            <label class="col-sm-2 col-form-label">Confirmar Codigo:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" formControlName='codigo_confirm'>
-              <span class="text-danger" *ngIf="formulario.errors?.codigo_comparativo">No son iguales</span>
-            </div>
-          </div>
-
-
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Marca:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="staticCodigo" name="marca:" formControlName='marca'>
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Color:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="staticCodigo" name="color:" formControlName='color'>
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Modelo:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="staticCodigo" name="modelo:" formControlName='modelo'>
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Año:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="staticCodigo" name="año:" formControlName='año'>
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Kilometraje:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="staticCodigo" name="kilometraje:"
-                formControlName='kilometraje'>
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Precio:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="staticCodigo" name="precio:" formControlName='precio'>
-            </div>
-          </div>
-
-          <div class="mb-3 row">
-            <label for="staticCodigo" class="col-sm-2 col-form-label">Calificacion:</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" id="staticCodigo" name="calificacion:"
-                formControlName='calificacion'>
-            </div>
-          </div>
-        </form>
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="card shadow-sm text-center" style="width: 40rem;">
+    <div class="card-header">
+      <h5 class="mb-0">Agregar información de Vehículo</h5>
+    </div>
+    <div class="card-body p-2">
+      <form [formGroup]="formulario">
+      <div class="mb-3 row">
+        <label for="codigo" class="col-sm-3 col-form-label">Código:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="codigo" name="codigo" formControlName='codigo'>
+          <span class="text-danger" *ngIf="formulario.controls['codigo'].errors?.required">Valor requerido / </span>
+          <span class="text-danger" *ngIf="formulario.controls['codigo'].errors?.codigoValidate">Ejemplo A001</span>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <button class="btn btn-info" (click)="guardar()">GUARDAR</button>
-    </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Confirmar Código:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" formControlName='codigo_confirm'>
+          <span class="text-danger" *ngIf="formulario.errors?.codigo_comparativo">No son iguales</span>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="marca" class="col-sm-3 col-form-label">Marca:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="marca" name="marca" formControlName='marca'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="color" class="col-sm-3 col-form-label">Color:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="color" name="color" formControlName='color'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="modelo" class="col-sm-3 col-form-label">Modelo:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="modelo" name="modelo" formControlName='modelo'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="ano" class="col-sm-3 col-form-label">Año:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="ano" name="ano" formControlName='ano'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="kilometraje" class="col-sm-3 col-form-label">Kilometraje:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="kilometraje" name="kilometraje" formControlName='kilometraje'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="precio" class="col-sm-3 col-form-label">Precio:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control form-control-sm" id="precio" name="precio" formControlName='precio'>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="calificacion" class="col-sm-3 col-form-label">Calificación:</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control form-control-sm" id="calificacion" name="calificacion" formControlName='calificacion' min="1" max="5">
+          <span class="text-danger" *ngIf="formulario.controls['calificacion'].errors?.min || formulario.controls['calificacion'].errors?.max">La calificación debe estar entre 1 y 5</span>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <div class="col-12 text-end">
+          <button class="btn btn-sm btn-dark" (click)="guardar()">GUARDAR</button>
+        </div>
+      </div>
+    </form>
   </div>
+</div>
 </div>

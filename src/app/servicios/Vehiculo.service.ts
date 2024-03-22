@@ -18,10 +18,10 @@ export class VehiculoService {
   getVehiculo(codigo: string): Observable<Vehiculo | undefined> {
     const escucha: Observable<Vehiculo | undefined> = new Observable(escuchando => {
       //Para que la infomacion se renderice despues de un segundo de abrise la ventana
-      setTimeout(()=>{
+      //setTimeout(()=>{
         let vehiculo = this.listavehiculos.find(ele => ele.codigo === codigo);
         escuchando.next(vehiculo);//next, error
-      }, 1000);
+      //}, 1000);
       
     });
 
