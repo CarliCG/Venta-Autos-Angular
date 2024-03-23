@@ -1,81 +1,89 @@
-<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-  <div class="card shadow-sm text-center" style="width: 40rem;">
-    <div class="card-header">
-      <h5 class="mb-0">Agregar información de Vehículo</h5>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <form [formGroup]="formulario">
+                        <fieldset>
+                            <legend class="text-center header mb-3">Agregar información de Vehículo</legend>
+
+                            <div class="form-group row mb-3">
+                                <label for="codigo" class="col-sm-1 col-form-label"><i></i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="codigo" name="codigo"
+                                        formControlName='codigo' placeholder="Código">
+                                    <span class="text-danger"
+                                        *ngIf="formulario.controls['codigo'].errors?.required">Valor requerido / </span>
+                                    <span class="text-danger"
+                                        *ngIf="formulario.controls['codigo'].errors?.codigoValidate">Ejemplo A001</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="marca" class="col-sm-1 col-form-label"><i></i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="marca" name="marca"
+                                        formControlName='marca' placeholder="Marca">
+                                </div>
+                            </div>
+
+       
+                            <div class="form-group row mb-3">
+                                <label for="modelo" class="col-sm-1 col-form-label"><i></i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="modelo" name="modelo"
+                                        formControlName='modelo' placeholder="Modelo">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="ano" class="col-sm-1 col-form-label"><i></i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="ano" name="ano"
+                                        formControlName='ano' placeholder="Año">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="kilometraje" class="col-sm-1 col-form-label"><i></i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="kilometraje"
+                                        name="kilometraje" formControlName='kilometraje' placeholder="Kilometraje">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="precio" class="col-sm-1 col-form-label"><i></i></label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control form-control-sm" id="precio" name="precio"
+                                        formControlName='precio' placeholder="Precio">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <label for="calificacion" class="col-sm-1 col-form-label"><i></i></label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control form-control-sm" id="calificacion"
+                                        name="calificacion" formControlName='calificacion' placeholder="Calificación"
+                                        min="1" max="5">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-3">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-sm btn-dark" (click)="guardar()">GUARDAR</button>
+
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class="card-body p-2">
-      <form [formGroup]="formulario">
-      <div class="mb-3 row">
-        <label for="codigo" class="col-sm-3 col-form-label">Código:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="codigo" name="codigo" formControlName='codigo'>
-          <span class="text-danger" *ngIf="formulario.controls['codigo'].errors?.required">Valor requerido / </span>
-          <span class="text-danger" *ngIf="formulario.controls['codigo'].errors?.codigoValidate">Ejemplo A001</span>
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Confirmar Código:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" formControlName='codigo_confirm'>
-          <span class="text-danger" *ngIf="formulario.errors?.codigo_comparativo">No son iguales</span>
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="marca" class="col-sm-3 col-form-label">Marca:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="marca" name="marca" formControlName='marca'>
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="color" class="col-sm-3 col-form-label">Color:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="color" name="color" formControlName='color'>
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="modelo" class="col-sm-3 col-form-label">Modelo:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="modelo" name="modelo" formControlName='modelo'>
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="ano" class="col-sm-3 col-form-label">Año:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="ano" name="ano" formControlName='ano'>
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="kilometraje" class="col-sm-3 col-form-label">Kilometraje:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="kilometraje" name="kilometraje" formControlName='kilometraje'>
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="precio" class="col-sm-3 col-form-label">Precio:</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control form-control-sm" id="precio" name="precio" formControlName='precio'>
-        </div>
-      </div>
-
-      <div class="mb-3 row">
-        <label for="calificacion" class="col-sm-3 col-form-label">Calificación:</label>
-        <div class="col-sm-9">
-          <input type="number" class="form-control form-control-sm" id="calificacion" name="calificacion" formControlName='calificacion' min="1" max="5">
-          <span class="text-danger" *ngIf="formulario.controls['calificacion'].errors?.min || formulario.controls['calificacion'].errors?.max">La calificación debe estar entre 1 y 5</span>
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <div class="col-12 text-end">
-          <button class="btn btn-sm btn-dark" (click)="guardar()">GUARDAR</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
 </div>

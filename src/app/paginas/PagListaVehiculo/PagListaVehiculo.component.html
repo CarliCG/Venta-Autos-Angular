@@ -7,8 +7,7 @@
     <div class="row">
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Filtro:</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca" 
-        [(ngModel)]="filtro">
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca" [(ngModel)]="filtro">
       </div>
     </div>
 
@@ -19,8 +18,8 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-2">
-        <a [routerLink]="['/vehiculo']" class="btn btn-info">NUEVO</a>
+      <div class="col-3">
+        <a class="btn btn-info" [routerLink]="['/vehiculo']">+ Nuevo Vehiculo</a>
       </div>
     </div>
     <br>
@@ -30,9 +29,9 @@
           <tr>
             <th>
               <!-- Funcionalidad boton -->
-              <button class="btn btn-sm" [ngClass]="{'btn-success': mostrarImagen, 'btn-warning': !mostrarImagen}"
-                (click)="mostrar()">
-                {{ mostrarImagen ? 'Ocultar' : 'Mostrar' }} Imagen
+              <button class="btn btn-sm" (click)='this.mostrarImagen = !this.mostrarImagen'
+                [ngClass]="{'btn-btn-warning': this.mostrarImagen, 'btn-info': !mostrarImagen}"
+                [innerText]="mostrarImagen ? 'Ocultar Imagen' : 'Mostrar Imagen'">
               </button>
             </th>
             <!-- crear tabla -->
@@ -40,10 +39,9 @@
             <th>Marca</th>
             <th>Modelo</th>
             <th>Año</th>
-            <th>Color</th>
-            <th>Kilometraje</th>
             <th>Precio</th>
             <th>Calificación</th>
+            <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -51,16 +49,17 @@
           <ng-container *ngFor="let item of listaVehiculos">
             <tr>
               <td><img [src]="item.foto" style="width: 80px;" *ngIf="mostrarImagen"></td>
-              <td><a [routerLink]="['/vehiculos/'+item.codigo]">{{item.codigo}}</a>
-              </td>
-              <td>{{item.marca| AEspacio:''}}</td>
-              <td>{{item.modelo }}</td>
+              <td><a [routerLink]="['/vehiculos/'+item.codigo]">{{item.codigo}}</a></td>
+              <td [innerText]="item.marca"></td>
+              <td>{{item.modelo | lowercase | AEspacio:'-'}}</td>
               <td>{{item.ano}}</td>
-              <td>{{item.color}}</td>
-              <td>{{item.kilometraje}}</td>
               <td>{{item.precio | currency}}</td>
+              <td>{{item.calificacion}}</td>
               <td>
-                <app-calificacion [calificacion]="item.calificacion" (accion)="recepcion($event)"></app-calificacion>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-primary">Editar</button>
+                  <button type="button" class="btn btn-btn-danger"(click)="eliminar(item.codigo)">Eliminar</button>
+                </div>
               </td>
             </tr>
           </ng-container>

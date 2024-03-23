@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehiculo } from '../../utilitarios/Modelos/Vehiculo';
 import { VehiculoService } from '../../servicios/Vehiculo.service';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import Swal from 'sweetalert2';
+import {validadorCodigo} from '../../validaciones/VehiculoValidaciones'
+// import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-PagVehiculoRegistro',
@@ -12,52 +14,61 @@ import Swal from 'sweetalert2';
 export class PagVehiculoRegistroComponent implements OnInit {
 
   formulario: FormGroup;
-
   constructor(
     private vehiculoServicio: VehiculoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    // private activatedRoute: ActivatedRoute
   ) {
     this.formulario = this.formBuilder.group({
       'codigo': ['', [Validators.required, validadorCodigo()]],
-      'codigo_confirm': [],
-      'marca': ['', [Validators.required, validadorCodigo()]],
+      'marca': ['', [Validators.required]],
       'modelo': [],
       'ano': [],
-      'color': [],
       'kilometraje': [],
       'precio': [],
       'calificacion': []
-    },{
-      validators:validadorCodigoComparativo()
     });
   }
 
   ngOnInit() {
-
+// this.activatedRoute.params.subscribe(param=>{
+//   let codigo=param['codigo'];
+//   this.vehiculoServicio.getVehiculo
+// })
   }
 
   guardar() {
-    let vehiculo: Vehiculo = { ...this.formulario.value };
-    this.vehiculoServicio.addvehiculo(vehiculo);
+    if (this.formulario.valid) {
+      this.vehiculoServicio.insertVehiculo({ ...this.formulario.value }).subscribe(
+        respuesta => {
+          if (respuesta.codigo == '') {
 
-    /*Swal.fire({
-      title: "Vehiculo Guardado",
-      text: "Se ha guardado con éxito",
-      icon: "info"
-    });*/
+            Swal.fire({
+              title: "Mensaje Completo",
+              text: "Vehiculo registrado con exito",
+              icon: "success"
+
+            }).then(res =>{
+              this.formulario.reset();
+            });
+    } else {
+      Swal.fire({
+        title: "Mensaje",
+        text: "No se pudo registrar el vehiculo:" + respuesta.mensaje,
+        icon: "error"
+      });
+    }
   }
+      );
+}else {
+  Swal.fire({
+    title: "Mensaje Incompleto",
+    text: "Existen campos sin llenar",
+    icon: "error"
+  });
 }
 
-// Función donde se recibe un parámetro y retorna ValidationError o null
-export function validadorCodigo(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    console.log(control);
-    const codigoV = /^[A]\d{3}$/;
-    let value = control.value;
-    if (codigoV.test(value)) {
-      return null; // si es válido retorna null, si no, el esquema del error
-    }
-    return { 'codigoValidate': true };
+    
   }
 }
 

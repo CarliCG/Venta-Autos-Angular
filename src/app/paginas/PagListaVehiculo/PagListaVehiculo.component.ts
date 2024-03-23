@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { VehiculoService } from '../../servicios/Vehiculo.service';
-
+import { VehiculoService, } from '../../servicios/Vehiculo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-PagListaVehiculo',
@@ -8,44 +8,51 @@ import { VehiculoService } from '../../servicios/Vehiculo.service';
   styleUrls: ['./PagListaVehiculo.component.css']
 })
 export class PagListaVehiculoComponent implements OnInit {
-  mostrarImagen = true
-private _filtro:string = '';
+  constructor(private vehiculoService:VehiculoService){}
+  public mostrarImagen = false;
+  public listaVehiculos: Array<any> = [];
+  private _filtro: string = '';
 
-get filtro (){
-  return this._filtro
-}
-
-set filtro (data:string){
-  this._filtro = data;
-  this.consultaVehiculos();
-}
-
-  @Input() valor: string = ''
-  listaVehiculos: Array<any> = [];
-
-  
-  constructor(
-    private vehiculoService: VehiculoService,
-  ) {
-
+  get filtro(): string {
+    return this._filtro;
   }
-  
-  mostrar() {
-    this.mostrarImagen = !this.mostrarImagen
+
+  set filtro(filtro: string) {
+    this._filtro = filtro;
+    
   }
 
   ngOnInit() {
-    this.consultaVehiculos();
-    
-  }
- 
-  consultaVehiculos(){
-    this.vehiculoService.getVehiculos(this.filtro).subscribe( data => {
-      this.listaVehiculos = data;
-    });
-  }
-  recepcion(dato: number) {
-    console.log('Dato: ', dato);
+    this.consultarVehiculo();
+
   }
 
+consultarVehiculo(){
+  this.vehiculoService.getVehiculos().subscribe(respuesta => {
+    this.listaVehiculos = respuesta;
+  });
+}
+
+  eliminar(codigo: string) {
+    Swal.fire({
+      title: "Seguro que deseas eliminar este registro?",
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText:'No',
+      icon:'question'
+    }).then((res)=>{
+      if(res.isConfirmed){
+        this.vehiculoService.eliminarVehiculo(codigo).subscribe(data=>{
+          if(data.codigo=='1'){
+            this.consultarVehiculo();
+            Swal.fire({
+              title: "Mensaje",
+              text:'Vehiculo eliminado con exito',
+              icon:'success'
+            });
+          }
+        });
+      }
+    });
+  }
 }
