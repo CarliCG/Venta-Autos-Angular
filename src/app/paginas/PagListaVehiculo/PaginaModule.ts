@@ -6,12 +6,16 @@ import { UtilitariosModule } from "../../utilitarios/UtilitariosModule";
 import { PagVehiculoComponent } from "../PagVehiculo/PagVehiculo.component";
 import { RouterModule } from "@angular/router";
 import { PagVehiculoRegistroComponent } from "../PagVehiculoRegistro/PagVehiculoRegistro.component";
+import { PagNotFoundComponent } from "../PagNotFound/PagNotFound.component";
+import { HomeComponent } from "../home/home.component";
 
 @NgModule ({
     declarations:[
         PagListaVehiculoComponent,
         PagVehiculoComponent,
-        PagVehiculoRegistroComponent
+        PagVehiculoRegistroComponent,
+        PagNotFoundComponent,
+        HomeComponent
     ],
 
     imports:[
@@ -24,7 +28,9 @@ import { PagVehiculoRegistroComponent } from "../PagVehiculoRegistro/PagVehiculo
     exports:[
         PagListaVehiculoComponent,
         PagVehiculoComponent,
-        PagVehiculoRegistroComponent
+        PagVehiculoRegistroComponent,
+        PagNotFoundComponent,
+        HomeComponent
     ]
 
 })

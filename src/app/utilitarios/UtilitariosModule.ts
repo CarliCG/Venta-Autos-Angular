@@ -6,15 +6,17 @@ import { CommonModule } from "@angular/common";
 @NgModule({
     declarations:[
         AEspacioPipe,
-        CalificacionComponent
+        CalificacionComponent,
     ],
     imports:[
-        CommonModule
+        CommonModule,
+        
     ],
 
     exports:[
         AEspacioPipe,
-        CalificacionComponent
+        CalificacionComponent,
+        
     ]
 })
 

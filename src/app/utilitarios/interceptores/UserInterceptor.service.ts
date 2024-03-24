@@ -1,20 +1,20 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+// import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+// import { Injectable } from '@angular/core';
+// import { Observable } from 'rxjs';
 
-@Injectable()
+// @Injectable()
 
-export class UserInterceptorService implements HttpInterceptor{
+// export class UserInterceptorService implements HttpInterceptor {
 
-  usuario:string='carla.campaña';
-clave:string='user-request';
-constructor() { }
+//   usuario: string = 'carla.campaña';
+//   clave: string = 'user-request';
+//   constructor() { }
 
-intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let clonar = req.clone({
-      headers:req.headers.append(this.clave,this.usuario)
-    });
-    return next.handle(clonar);
-}
+//   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+//     let clonar = req.clone({
+//       headers: req.headers.append(this.clave, this.usuario)
+//     });
+//     return next.handle(clonar);
+//   }
 
-}
+// }

@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehiculo } from '../../utilitarios/Modelos/Vehiculo';
-import { VehiculoService } from '../../servicios/Vehiculo.service';
-import { FormBuilder, FormGroup, Validators, ValidationErrors } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import {validadorCodigo} from '../../validaciones/VehiculoValidaciones'
-// import { ActivatedRoute } from '@angular/router';
+import { VehiculoService } from '../../servicios/Vehiculo.service';
+import { validadorCodigo } from '../../validaciones/VehiculoValidaciones';
 
 @Component({
   selector: 'app-PagVehiculoRegistro',
@@ -12,73 +10,62 @@ import {validadorCodigo} from '../../validaciones/VehiculoValidaciones'
   styleUrls: ['./PagVehiculoRegistro.component.css']
 })
 export class PagVehiculoRegistroComponent implements OnInit {
-
   formulario: FormGroup;
+
   constructor(
     private vehiculoServicio: VehiculoService,
-    private formBuilder: FormBuilder,
-    // private activatedRoute: ActivatedRoute
+    private formBuilder: FormBuilder
   ) {
     this.formulario = this.formBuilder.group({
       'codigo': ['', [Validators.required, validadorCodigo()]],
       'marca': ['', [Validators.required]],
-      'modelo': [],
-      'ano': [],
-      'kilometraje': [],
-      'precio': [],
-      'calificacion': []
+      'modelo': [''],
+      'ano': [''],
+      'kilometraje': [''],
+      'precio': [''],
+      'calificacion': ['']
     });
   }
 
   ngOnInit() {
-// this.activatedRoute.params.subscribe(param=>{
-//   let codigo=param['codigo'];
-//   this.vehiculoServicio.getVehiculo
-// })
   }
 
   guardar() {
     if (this.formulario.valid) {
-      this.vehiculoServicio.insertVehiculo({ ...this.formulario.value }).subscribe(
+      console.log('Guardando vehículo:', this.formulario.value);
+      this.vehiculoServicio.insertVehiculo(this.formulario.value).subscribe(
         respuesta => {
-          if (respuesta.codigo == '') {
-
+          if (respuesta.codigo === '') {
             Swal.fire({
-              title: "Mensaje Completo",
-              text: "Vehiculo registrado con exito",
-              icon: "success"
-
-            }).then(res =>{
+              title: 'Mensaje Completo',
+              text: 'Vehiculo registrado con exito',
+              icon: 'success'
+            }).then(() => {
               this.formulario.reset();
             });
+          } else {
+            Swal.fire({
+              title: 'Mensaje',
+              text: 'No se pudo registrar el vehiculo: ' + respuesta.mensaje,
+              icon: 'error'
+            });
+          }
+        },
+        error => {
+          console.error('Error al intentar guardar el vehículo:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'Hubo un error al intentar guardar el vehículo. Por favor, inténtelo de nuevo más tarde.',
+            icon: 'error'
+          });
+        }
+      );
     } else {
       Swal.fire({
-        title: "Mensaje",
-        text: "No se pudo registrar el vehiculo:" + respuesta.mensaje,
-        icon: "error"
+        title: 'Mensaje Incompleto',
+        text: 'Existen campos sin llenar o con datos inválidos',
+        icon: 'error'
       });
     }
-  }
-      );
-}else {
-  Swal.fire({
-    title: "Mensaje Incompleto",
-    text: "Existen campos sin llenar",
-    icon: "error"
-  });
-}
-
-    
-  }
-}
-
-export function validadorCodigoComparativo() {
-  return (formulario: FormGroup): ValidationErrors | null => {
-    let valor = formulario.controls['codigo'].value;
-    let valor2 = formulario.controls['codigo_confirm'].value;
-    if (valor === valor2) {
-      return null;
-    }
-    return { 'codigo_comparativo': true };
   }
 }

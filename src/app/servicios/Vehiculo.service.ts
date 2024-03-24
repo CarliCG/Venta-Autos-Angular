@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Vehiculo } from '../utilitarios/Modelos/Vehiculo';
 import { Observable, map } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,7 +33,9 @@ export class VehiculoService {
 
 
   getVehiculo(codigo: string) {
+    console.log('recibe vehiculo'+codigo)
     return this.http.get<Respuesta>(this.baseUrl + 'vehiculo/' + codigo);
+    
   }
 
   actualizarVehiculo(vehiculo: Vehiculo, codigo: string) {
@@ -41,16 +45,6 @@ export class VehiculoService {
   eliminarVehiculo(codigo:string){
     return this.http.delete<Respuesta>(this.baseUrl+'vehiculo/'+codigo);
   }
-  // getVehiculo(codigo: string): Observable<Vehiculo | undefined> {
-  //   const escucha: Observable<Vehiculo | undefined> = new Observable(escuchando => {
-
-  //     let vehiculo = this.listavehiculos.find(ele => ele.codigo === codigo);
-  //     escuchando.next(vehiculo);
-
-  //   });
-
-  //   return escucha;
-  // }
 
   addvehiculo(vehiculo: Vehiculo) {
     this.listavehiculos.push(vehiculo);
@@ -60,7 +54,6 @@ export class VehiculoService {
       'codigo': 'A001',
       'marca': 'Toyota',
       'modelo': 'Corolla',
-      'color': 'Azul',
       'ano': 2019,
       'kilometraje': 25000,
       'precio': 15000,
@@ -71,7 +64,6 @@ export class VehiculoService {
       'codigo': 'A002',
       'marca': 'Honda',
       'modelo': 'Civic',
-      'color': 'Rojo',
       'ano': 2018,
       'kilometraje': 30000,
       'precio': 16000,
@@ -82,7 +74,6 @@ export class VehiculoService {
       'codigo': 'A003',
       'marca': 'Ford',
       'modelo': 'Fiesta',
-      'color': 'Blanco',
       'ano': 2020,
       'kilometraje': 20000,
       'precio': 18000,
@@ -93,7 +84,6 @@ export class VehiculoService {
       'codigo': 'A004',
       'marca': 'Chevrolet',
       'modelo': 'Spark',
-      'color': 'Negro',
       'ano': 2017,
       'kilometraje': 35000,
       'precio': 14000,
@@ -104,7 +94,6 @@ export class VehiculoService {
       'codigo': 'A005',
       'marca': 'Volkswagen',
       'modelo': 'Golf',
-      'color': 'Gris',
       'ano': 2016,
       'kilometraje': 40000,
       'precio': 17000,
