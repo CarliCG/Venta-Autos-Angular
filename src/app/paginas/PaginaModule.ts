@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { PagVehiculoRegistroComponent } from "./PagVehiculoRegistro/PagVehiculoRegistro.component";
 import { HomeComponent } from "./home/home.component";
 import { AEspacioPipe } from "../utilitarios/pipes/AEspacio.pipe";
+import { ClientesComponent } from "./Clientes/Clientes.component";
 
 @NgModule ({
     declarations:[
@@ -14,7 +15,8 @@ import { AEspacioPipe } from "../utilitarios/pipes/AEspacio.pipe";
         PagVehiculoComponent,
         PagVehiculoRegistroComponent,
         HomeComponent,
-        AEspacioPipe  
+        AEspacioPipe,
+        ClientesComponent  
 
     ],
 
@@ -28,7 +30,8 @@ import { AEspacioPipe } from "../utilitarios/pipes/AEspacio.pipe";
         PagListaVehiculoComponent,
         PagVehiculoComponent,
         PagVehiculoRegistroComponent,        
-        HomeComponent
+        HomeComponent,
+        ClientesComponent
     ]
 
 })

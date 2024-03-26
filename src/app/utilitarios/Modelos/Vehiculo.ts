@@ -6,7 +6,7 @@
 //   kilometraje:string;
 //   precio:number;
 //   foto:string|null;
-//   ano:number;
+//   anio:number;
 //   calificacion:number;
 
 // }

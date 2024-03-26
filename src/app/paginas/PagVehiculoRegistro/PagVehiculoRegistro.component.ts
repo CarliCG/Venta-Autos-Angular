@@ -22,7 +22,7 @@ export class PagVehiculoRegistroComponent implements OnInit {
       'codigo': ['', [Validators.required, validadorCodigo()]],
       'marca': ['',],
       'modelo': [''],
-      'ano':[''],
+      'anio':[''],
       'kilometraje':[''],
       'precio': [],        
       'calificacion': ['']

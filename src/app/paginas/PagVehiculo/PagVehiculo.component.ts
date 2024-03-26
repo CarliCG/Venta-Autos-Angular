@@ -24,7 +24,7 @@ export class PagVehiculoComponent implements OnInit {
       'codigo': ['', [Validators.required, validadorCodigo()]],
       'marca': ['', [Validators.required]],
       'modelo': [''],
-      'ano': [''],
+      'anio': [''],
       'kilometraje': [''],
       'precio': [''],
       'calificacion': ['']
@@ -41,7 +41,7 @@ export class PagVehiculoComponent implements OnInit {
           this.formulario.controls['codigo'].setValue(this.vehiculo?.codigo);
           this.formulario.controls['marca'].setValue(this.vehiculo?.marca);
           this.formulario.controls['modelo'].setValue(this.vehiculo?.modelo);
-          this.formulario.controls['ano'].setValue(this.vehiculo?.ano);
+          this.formulario.controls['anio'].setValue(this.vehiculo?.anio);
           this.formulario.controls['kilometraje'].setValue(this.vehiculo?.kilometraje);
           this.formulario.controls['precio'].setValue(this.vehiculo?.precio);
           this.formulario.controls['calificacion'].setValue(this.vehiculo?.calificacion);
