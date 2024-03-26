@@ -13,17 +13,21 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    //lista general de los vehiculos
     path: 'vehiculos',
     component: PagListaVehiculoComponent
   },
   {
+    //vehiculos para registro agregar uno nuevo
     path: 'vehiculo',
     component: PagVehiculoRegistroComponent
   },
+//registro de clientes
   { path: "clientes", 
   component: ClientesComponent
  },
   {
+//vehiculos por codigo 
     path: 'vehiculos/:codigo',
     component: PagVehiculoComponent
   },

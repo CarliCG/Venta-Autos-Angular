@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehiculo } from '../../utilitarios/Modelos/Vehiculo';
 import { ActivatedRoute } from '@angular/router';
-import { VehiculoService } from '../../servicios/Vehiculo.service';
+import { VehiculoService, Vehiculo } from '../../servicios/Vehiculo.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { validadorCodigo } from '../../validaciones/VehiculoValidaciones'
 import Swal from 'sweetalert2'
@@ -13,21 +12,22 @@ import Swal from 'sweetalert2'
   styleUrls: ['./PagVehiculo.component.css']
 })
 export class PagVehiculoComponent implements OnInit {
-
+  
   vehiculo?: Vehiculo;
   formulario: FormGroup;
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(
+    private activatedRoute: ActivatedRoute,
     private vehiculoService: VehiculoService,
     private formBuilder: FormBuilder
   ) {
     this.formulario = this.formBuilder.group({
       'codigo': ['', [Validators.required, validadorCodigo()]],
       'marca': ['', [Validators.required]],
-      'modelo': [],
-      'ano': [],
-      'kilometraje': [],
-      'precio': [],
-      'calificacion': []
+      'modelo': [''],
+      'ano': [''],
+      'kilometraje': [''],
+      'precio': [''],
+      'calificacion': ['']
     });
     this.formulario.controls['codigo'].disable();
   }
@@ -35,7 +35,7 @@ export class PagVehiculoComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.vehiculoService.getVehiculo(params['codigo']).subscribe(data => {
-        if (data.codigo == '1') {
+        if (data.codigo === '1') {
           this.vehiculo = data.data;
 
           this.formulario.controls['codigo'].setValue(this.vehiculo?.codigo);

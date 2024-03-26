@@ -6,6 +6,6 @@ export function validadorCodigo(): ValidatorFn {
     if (value && value.trim() !== '') {
       return null; // El campo no está vacío, no hay error
     }
-    return { 'codigoEmpty': true }; // El campo está vacío, devolver error
+    return { 'codigoValidate': true }; // El campo está vacío, devolver error
   }
 }

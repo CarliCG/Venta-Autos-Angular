@@ -13,16 +13,18 @@ export class PagVehiculoRegistroComponent implements OnInit {
   formulario: FormGroup;
 
   constructor(
+
+    private formBuilder: FormBuilder,
     private vehiculoServicio: VehiculoService,
-    private formBuilder: FormBuilder
+    
   ) {
     this.formulario = this.formBuilder.group({
       'codigo': ['', [Validators.required, validadorCodigo()]],
-      'marca': ['', [Validators.required]],
+      'marca': ['',],
       'modelo': [''],
-      'ano': [''],
-      'kilometraje': [''],
-      'precio': [''],
+      'ano':[''],
+      'kilometraje':[''],
+      'precio': [],        
       'calificacion': ['']
     });
   }
@@ -35,7 +37,7 @@ export class PagVehiculoRegistroComponent implements OnInit {
       console.log('Guardando vehículo:', this.formulario.value);
       this.vehiculoServicio.insertVehiculo(this.formulario.value).subscribe(
         respuesta => {
-          if (respuesta.codigo === '') {
+          if (respuesta.codigo == '1') {
             Swal.fire({
               title: 'Mensaje Completo',
               text: 'Vehiculo registrado con exito',
@@ -51,14 +53,14 @@ export class PagVehiculoRegistroComponent implements OnInit {
             });
           }
         },
-        error => {
-          console.error('Error al intentar guardar el vehículo:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'Hubo un error al intentar guardar el vehículo. Por favor, inténtelo de nuevo más tarde.',
-            icon: 'error'
-          });
-        }
+        // error => {
+        //   console.error('Error al intentar guardar el vehículo:', error);
+        //   Swal.fire({
+        //     title: 'Error',
+        //     text: 'Hubo un error al intentar guardar el vehículo. Por favor, inténtelo de nuevo más tarde.',
+        //     icon: 'error'
+        //   });
+        // }
       );
     } else {
       Swal.fire({
