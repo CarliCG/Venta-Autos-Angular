@@ -11,7 +11,7 @@ export class PagListaVehiculoComponent implements OnInit {
   constructor(private vehiculoService: VehiculoService) { }
   public mostrarImagen = false;
   public listaVehiculos: Array<Vehiculo> = [];
-  //private _filtro: string = '';
+  private _filtro: string = '';
   public rows: number = 10;
   public page: number = 1;
   public pages: number = 0;
@@ -24,7 +24,7 @@ export class PagListaVehiculoComponent implements OnInit {
   }
 
   consultarVehiculos() {
-    console.log(this.consultarVehiculos)
+    
     this.vehiculoService.getVehiculos(this.filtro, this.rows, this.page).subscribe(respuesta => {
         if (respuesta.codigo === '1') {
           this.listaVehiculos = respuesta.data;
@@ -75,7 +75,7 @@ export class PagListaVehiculoComponent implements OnInit {
       if (res.isConfirmed) {
         this.vehiculoService.eliminarVehiculo(codigo).subscribe(data => {
           if (data.codigo == '1') {
-            this.consultarVehiculos();
+            // this.consultarVehiculos();
             Swal.fire({
               title: "Mensaje",
               text: 'Vehiculo eliminado con exito',

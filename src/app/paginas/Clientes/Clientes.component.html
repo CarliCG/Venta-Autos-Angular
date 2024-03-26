@@ -3,56 +3,56 @@
 
     <div class="card card-form mt-2 mb-4 bg-dark-transparent">
       <div class="card-body rounded-top">
-          <h3 class="font-weight-bold text-center text-uppercase text-white my-4">Registro Cliente</h3>
-          <form class="pb-5 px-2" _lpchecked="1">
-              <div class="d-flex justify-content-start align-items-center mb-4">
-                  <i class="far fa-user fa-lg text-white fa-fw me-3"></i>
-                  <div class="form-outline form-white w-100">
-                      <input type="text" id="form1Example1" class="form-control" />
-                      <label class="form-label text-white font-weight-bold" for="form1Example1">Nombre</label>
-                  </div>
-              </div>
-              <div class="d-flex justify-content-start align-items-center mb-4">
-                  <i class="far fa-hand-point-right fa-lg text-white fa-fw me-3"></i>
-                  <div class="form-outline form-white w-100">
-                      <input type="password" id="form1Example2" class="form-control" />
-                      <label class="form-label text-white font-weight-bold" for="form1Example2">Contraseña</label>
-                  </div>
-              </div>
-          </form>
-      </div>
-  </div>
-    <div class="card card-form-2 mb-0 z-depth-0">
-      <div class="card-body">
-        <form class="text-center">
+        <h3 class="font-weight-bold text-center text-uppercase text-white my-4">Registro Cliente</h3>
+        <form class="pb-5 px-2" _lpchecked="1">
+          <div class="d-flex justify-content-start align-items-center mb-4">
+            <i class="far fa-user fa-lg text-white fa-fw me-3"></i>
+            <div class="form-outline form-white w-100">
+              <input type="text" id="form1Example1" class="form-control" />
+              <label class="form-label text-white font-weight-bold" for="form1Example1">Nombre</label>
+            </div>
+          </div>
+          <div class="d-flex justify-content-start align-items-center mb-4">
+            <i class="far fa-hand-point-right fa-lg text-white fa-fw me-3"></i>
+            <div class="form-outline form-white w-100">
+              <input type="password" id="form1Example2" class="form-control" />
+              <label class="form-label text-white font-weight-bold" for="form1Example2">Contraseña</label>
+            </div>
+          </div>
+
           <div class="form-check red-checkbox my-3">
-            <input class="form-check-input ms-auto" type="checkbox" value="" id="flexCheckDefault1" checked />
+            <input class="form-check-input ms-auto" type="checkbox" value="" id="flexCheckDefault1" (change)="toggleTarjeta($event)" />
             <label class="form-check-label" for="flexCheckDefault1">
               ¿Desea que nos contactemos?
             </label>
           </div>
-          <div class="d-flex justify-content-start align-items-center mb-4">
-            <i class="far fa-envelope fa-lg text-black fa-fw me-3"></i>
-            <div class="form-outline form-white w-100">
-                <input type="text" id="form1Example3" class="form-control" />
-                <label class="form-label" for="form1Example3">E-mail</label>
-            </div>
-        </div>
-        
-          <div class="d-flex justify-content-start align-items-center pb-3">
-            <i class="far fa-star fa-lg text-black fa-fw me-3"></i>
-            <div class="form-outline form-white w-100">
-              <input type="text" id="form1Example4" class="form-control" />
-              <label class="form-label" for="form1Example4">Numero de contacto</label>
 
+          <div class="card card-form-2 mb-0 z-depth-0" id="tarjeta-oculta" *ngIf="mostrarTarjeta">
+            <div class="card-body">
+              <form class="text-center">
+                <div class="d-flex justify-content-start align-items-center mb-4">
+                  <i class="far fa-envelope fa-lg text-black fa-fw me-3"></i>
+                  <div class="form-outline form-white w-100">
+                    <input type="text" id="form1Example3" class="form-control" />
+                    <label class="form-label" for="form1Example3">E-mail</label>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-start align-items-center pb-3">
+                  <i class="far fa-star fa-lg text-black fa-fw me-3"></i>
+                  <div class="form-outline form-white w-100">
+                    <input type="text" id="form1Example4" class="form-control" />
+                    <label class="form-label" for="form1Example4">Numero de contacto</label>
+                  </div>
+                </div>
+
+                <button class="btn my-custom-btn" type="submit">Registra Cliente</button>
+
+                <button class="btn my-custom-btn" type="submit" (click)="redirectToHome()">Inicio</button>
+              </form>
             </div>
           </div>
 
-          <button class="btn my-custom-btn" type="submit">Registra Cliente</button>
-
-          <button class="btn my-custom-btn" type="submit"(click)='redirectToHome()'>Inicio</button>
-          
-          
         </form>
       </div>
     </div>

@@ -53,62 +53,7 @@ export class VehiculoService {
     return this.http.delete<Respuesta>(this.baseUrl+'vehiculo/'+codigo);
   }
 
-  // addvehiculo(vehiculo: Vehiculo) {
-  //   this.listavehiculos.push(vehiculo);
-  // }
-  
-  // private listavehiculos: Array<Vehiculo> = [
-  //   {
-  //     'codigo': 'A001',
-  //     'marca': 'Toyota',
-  //     'modelo': 'Corolla',
-  //     'anio': 2019,
-  //     'kilometraje': 25000,
-  //     'precio': 15000,
-  //     'calificacion': 4,
-  //     'foto': 'https://www.toyota.com.ec//admin/sites/default/files/2022-07/BLANCO_corolla_sedan.png'
-  //   },
-  //   {
-  //     'codigo': 'A002',
-  //     'marca': 'Honda',
-  //     'modelo': 'Civic',
-  //     'anio': 2018,
-  //     'kilometraje': 30000,
-  //     'precio': 16000,
-  //     'calificacion': 3,
-  //     'foto': 'https://cdn.motor1.com/images/mgl/WV6rr/s1/lanzamiento-honda-civic-2017.jpg'
-  //   },
-  //   {
-  //     'codigo': 'A003',
-  //     'marca': 'Ford',
-  //     'modelo': 'Fiesta',
-  //     'anio': 2020,
-  //     'kilometraje': 20000,
-  //     'precio': 18000,
-  //     'calificacion': 5,
-  //     'foto': 'https://cdn.motor1.com/images/mgl/Qzrb7/s1/lanzamiento-ford-fiesta-2018-mercosur.jpg'
-  //   },
-  //   {
-  //     'codigo': 'A004',
-  //     'marca': 'Chevrolet',
-  //     'modelo': 'Spark',
-  //     'anio': 2017,
-  //     'kilometraje': 35000,
-  //     'precio': 14000,
-  //     'calificacion': 2,
-  //     'foto': 'https://www.ambacar.ec/wp-content/uploads/2018/03/chevrolet-spark-gt.png'
-  //   },
-  //   {
-  //     'codigo': 'A005',
-  //     'marca': 'Volkswagen',
-  //     'modelo': 'Golf',
-  //     'anio': 2016,
-  //     'kilometraje': 40000,
-  //     'precio': 17000,
-  //     'calificacion': 4,
-  //     'foto': ''
-  //   }
-  // ];
+
 }
 
 export interface Vehiculo {
