@@ -8,6 +8,7 @@ import { PagVehiculoRegistroComponent } from "./PagVehiculoRegistro/PagVehiculoR
 import { HomeComponent } from "./home/home.component";
 import { AEspacioPipe } from "../utilitarios/pipes/AEspacio.pipe";
 import { ClientesComponent } from "./Clientes/Clientes.component";
+import { PagVehiculoEditarComponent } from "./PagVehiculoEditar/PagVehiculoEditar.component";
 
 @NgModule ({
     declarations:[
@@ -16,7 +17,8 @@ import { ClientesComponent } from "./Clientes/Clientes.component";
         PagVehiculoRegistroComponent,
         HomeComponent,
         AEspacioPipe,
-        ClientesComponent  
+        ClientesComponent,
+        PagVehiculoEditarComponent  
 
     ],
 
@@ -31,7 +33,8 @@ import { ClientesComponent } from "./Clientes/Clientes.component";
         PagVehiculoComponent,
         PagVehiculoRegistroComponent,        
         HomeComponent,
-        ClientesComponent
+        ClientesComponent,
+        
     ]
 
 })

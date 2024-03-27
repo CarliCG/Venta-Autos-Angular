@@ -81,7 +81,7 @@ export class PagListaVehiculoComponent implements OnInit {
     }).then((res) => {
       if (res.isConfirmed) {
         // Redirige a la página de edición con el código del vehículo como parámetro de ruta
-        this.router.navigateByUrl(`/vehiculos/${codigo}`);
+        this.router.navigateByUrl(`/editar/${codigo}`);
       }
     });
   }

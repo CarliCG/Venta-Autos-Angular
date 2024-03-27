@@ -20,7 +20,8 @@ import { AEspacioPipe } from './utilitarios/pipes/AEspacio.pipe';
     BrowserModule,
     AppRoutingModule,
     PaginaModule,
-    HttpClientModule
+    HttpClientModule,
+    
    
   ],
   providers: [

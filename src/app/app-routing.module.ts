@@ -6,6 +6,7 @@ import { PagNotFoundComponent } from './paginas/PagNotFound/PagNotFound.componen
 import { PagVehiculoComponent } from './paginas/PagVehiculo/PagVehiculo.component';
 import { PagVehiculoRegistroComponent } from './paginas/PagVehiculoRegistro/PagVehiculoRegistro.component';
 import { ClientesComponent } from './paginas/Clientes/Clientes.component';
+import { PagVehiculoEditarComponent } from './paginas/PagVehiculoEditar/PagVehiculoEditar.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'vehiculos/:codigo',
     component: PagVehiculoComponent
   },
+  {
+    //editar vehiculos por codigo 
+        path: 'editar/:codigo',
+        component: PagVehiculoEditarComponent
+      },
   {
     path: '',
     component: HomeComponent,
