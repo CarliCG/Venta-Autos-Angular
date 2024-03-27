@@ -53,14 +53,14 @@ export class PagVehiculoRegistroComponent implements OnInit {
             });
           }
         },
-        error => {
-          console.error('Error al intentar guardar el vehículo:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'Hubo un error al intentar guardar el vehículo. Por favor, inténtelo de nuevo más tarde.',
-            icon: 'error'
-          });
-        }
+        // error => {
+        //   console.error('Error al intentar guardar el vehículo:', error);
+        //   Swal.fire({
+        //     title: 'Error',
+        //     text: 'Hubo un error al intentar guardar el vehículo. Por favor, inténtelo de nuevo más tarde.',
+        //     icon: 'error'
+        //   });
+        // }
       );
     } else {
       Swal.fire({

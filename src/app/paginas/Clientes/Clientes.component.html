@@ -1,22 +1,28 @@
 <div class="container">
   <section class="mx-auto my-5" style="max-width: 23rem;">
-
     <div class="card card-form mt-2 mb-4 bg-dark-transparent">
       <div class="card-body rounded-top">
         <h3 class="font-weight-bold text-center text-uppercase text-white my-4">Registro Cliente</h3>
-        <form class="pb-5 px-2" _lpchecked="1">
+        <form class="pb-5 px-2" (ngSubmit)="registrarCliente()">
           <div class="d-flex justify-content-start align-items-center mb-4">
             <i class="far fa-user fa-lg text-white fa-fw me-3"></i>
             <div class="form-outline form-white w-100">
-              <input type="text" id="form1Example1" class="form-control" />
-              <label class="form-label text-white font-weight-bold" for="form1Example1">Nombre</label>
+              <input type="text" id="nombre" class="form-control" [(ngModel)]="nombre" name="nombre" />
+              <label class="form-label text-white font-weight-bold" for="nombre">Nombre</label>
             </div>
           </div>
           <div class="d-flex justify-content-start align-items-center mb-4">
             <i class="far fa-hand-point-right fa-lg text-white fa-fw me-3"></i>
             <div class="form-outline form-white w-100">
-              <input type="password" id="form1Example2" class="form-control" />
-              <label class="form-label text-white font-weight-bold" for="form1Example2">Contraseña</label>
+              <input type="text" id="apellido" class="form-control" [(ngModel)]="apellido" name="apellido" />
+              <label class="form-label text-white font-weight-bold" for="apellido">Apellido</label>
+            </div>
+          </div>
+          <div class="d-flex justify-content-start align-items-center mb-4">
+            <i class="far fa-hand-point-right fa-lg text-white fa-fw me-3"></i>
+            <div class="form-outline form-white w-100">
+              <input type="password" id="password" class="form-control" [(ngModel)]="password" name="password" />
+              <label class="form-label text-white font-weight-bold" for="password">Contraseña</label>
             </div>
           </div>
 
@@ -26,6 +32,9 @@
               ¿Desea que nos contactemos?
             </label>
           </div>
+          
+          <button class="btn my-custom-btn" type="submit">Registrar Cliente</button>
+          <button class="btn my-custom-btn" type="button" (click)="redirectToHome()">Inicio</button>
 
           <div class="card card-form-2 mb-0 z-depth-0" id="tarjeta-oculta" *ngIf="mostrarTarjeta">
             <div class="card-body">
@@ -33,26 +42,23 @@
                 <div class="d-flex justify-content-start align-items-center mb-4">
                   <i class="far fa-envelope fa-lg text-black fa-fw me-3"></i>
                   <div class="form-outline form-white w-100">
-                    <input type="text" id="form1Example3" class="form-control" />
-                    <label class="form-label" for="form1Example3">E-mail</label>
+                    <input type="text" id="email" class="form-control" [(ngModel)]="email" name="email" />
+                    <label class="form-label" for="email">E-mail</label>
                   </div>
                 </div>
 
                 <div class="d-flex justify-content-start align-items-center pb-3">
                   <i class="far fa-star fa-lg text-black fa-fw me-3"></i>
                   <div class="form-outline form-white w-100">
-                    <input type="text" id="form1Example4" class="form-control" />
-                    <label class="form-label" for="form1Example4">Numero de contacto</label>
+                    <input type="text" id="telefono" class="form-control" [(ngModel)]="telefono" name="telefono" />
+                    <label class="form-label" for="telefono">Numero de contacto</label>
                   </div>
                 </div>
-
-                <button class="btn my-custom-btn" type="submit">Registra Cliente</button>
-
-                <button class="btn my-custom-btn" type="submit" (click)="redirectToHome()">Inicio</button>
               </form>
             </div>
           </div>
-
         </form>
       </div>
     </div>
+  </section>
+</div>

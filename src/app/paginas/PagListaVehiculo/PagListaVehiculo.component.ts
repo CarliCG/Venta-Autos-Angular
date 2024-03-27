@@ -26,12 +26,15 @@ export class PagListaVehiculoComponent implements OnInit {
   consultarVehiculos() {
     
     this.vehiculoService.getVehiculos(this.filtro, this.rows, this.page).subscribe(respuesta => {
-        if (respuesta.codigo === '1') {
+       
           this.listaVehiculos = respuesta.data;
           this.pages = respuesta.pages;
           this.paginar(this.pages);
           console.log('Lista de vehículos actualizada:', this.listaVehiculos);
-        }
+
+      }, error => {
+        console.log(error);
+        
       }
     );
 }
