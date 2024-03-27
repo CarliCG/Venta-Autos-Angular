@@ -24,7 +24,7 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Modelo:</label>
           <div class="col-sm-9">
-            {{vehiculo?.modelo}}
+            {{vehiculo?.modelo }}
           </div>
         </div>
         <div class="mb-3 row">
@@ -36,21 +36,20 @@
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Precio:</label>
           <div class="col-sm-9">
-            {{vehiculo?.precio}}
+            {{vehiculo?.precio| currency}}
           </div>
         </div>
         <div class="mb-3 row">
           <label class="col-sm-3 col-form-label">Calificacion:</label>
           <div class="col-sm-9">
-          
+            {{vehiculo?.calificacion}}
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="card-footer">
-    <button class="btn btn-dark">
-      <i class="fas fa-arrow-left"></i> Volver
-    </button>
+    <button class="fas fa-arrow-left btn btn-dark" type="button" (click)="redirectToLista()">Volver</button>
+
   </div>
 </div>

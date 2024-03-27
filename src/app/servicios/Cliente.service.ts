@@ -22,7 +22,7 @@ export class UserService {
   addUser(cliente: cliente) {
     console.log('Realizando solicitud POST para agregar un nuevo usuario:', cliente);
 
-    return this.http.post<UserData>(this.baseUrl + 'cliente/', cliente, this.httpOptions);
+    return this.http.post<UserData>(this.baseUrl + '/cliente/', cliente, this.httpOptions);
   }
 
 }

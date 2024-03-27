@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VehiculoService, Respuesta, Vehiculo } from '../../servicios/Vehiculo.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-PagListaVehiculo',
@@ -8,14 +10,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./PagListaVehiculo.component.css']
 })
 export class PagListaVehiculoComponent implements OnInit {
-  constructor(private vehiculoService: VehiculoService) { }
-  public mostrarImagen = false;
+  constructor(private vehiculoService: VehiculoService, private router: Router) { }
+  public mostrarImagen = true;
   public listaVehiculos: Array<Vehiculo> = [];
   private _filtro: string = '';
   public rows: number = 10;
   public page: number = 1;
   public pages: number = 0;
   public filtro: string = '';
+  
 
 
   ngOnInit() {
@@ -67,6 +70,24 @@ export class PagListaVehiculoComponent implements OnInit {
       this.consultarVehiculos();
     }
   }
+
+  editarVehiculo(codigo: string) {
+    Swal.fire({
+      title: "Seguro que deseas editar este registro?",
+      showCancelButton: true,
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No',
+      icon: 'question'
+    }).then((res) => {
+      if (res.isConfirmed) {
+        // Redirige a la página de edición con el código del vehículo como parámetro de ruta
+        this.router.navigateByUrl(`/vehiculos/${codigo}`);
+      }
+    });
+  }
+  
+
+  
   eliminar(codigo: string) {
     Swal.fire({
       title: "Seguro que deseas eliminar este registro?",

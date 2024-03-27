@@ -7,7 +7,7 @@
     <div class="row">
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Filtro:</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca" >
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca">
       </div>
     </div>
 
@@ -39,10 +39,11 @@
         <tr>
           <th>
             <!-- Funcionalidad boton -->
-            <button class="btn btn-sm" (click)='this.mostrarImagen = !this.mostrarImagen'
-              [ngClass]="{'btn-btn-warning': this.mostrarImagen, 'btn-info': !mostrarImagen}"
+            <button class="btn btn-sm" (click)="mostrarImagen = !mostrarImagen"
+              [ngClass]="{'btn-info': mostrarImagen, 'btn-warning': !mostrarImagen}"
               [innerText]="mostrarImagen ? 'Ocultar Imagen' : 'Mostrar Imagen'">
             </button>
+
           </th>
           <!-- crear tabla -->
           <th>Codigo</th>
@@ -68,7 +69,7 @@
             <td>{{item.calificacion}}</td>
             <td>
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary">Editar</button>
+                <button type="button" class="btn btn-primary" (click)="editarVehiculo(item.codigo)">Editar</button>
                 <button type="button" class="btn btn-btn-danger" (click)="eliminar(item.codigo)">Eliminar</button>
               </div>
             </td>

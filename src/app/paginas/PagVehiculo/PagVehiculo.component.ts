@@ -4,6 +4,8 @@ import { VehiculoService, Vehiculo } from '../../servicios/Vehiculo.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { validadorCodigo } from '../../validaciones/VehiculoValidaciones'
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -18,7 +20,8 @@ export class PagVehiculoComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private vehiculoService: VehiculoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.formulario = this.formBuilder.group({
       'codigo': ['', [Validators.required, validadorCodigo()]],
@@ -35,28 +38,25 @@ export class PagVehiculoComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.vehiculoService.getVehiculo(params['codigo']).subscribe(data => {
-        if (data.codigo === '1') {
-          this.vehiculo = data.data;
-
-          this.formulario.controls['codigo'].setValue(this.vehiculo?.codigo);
-          this.formulario.controls['marca'].setValue(this.vehiculo?.marca);
-          this.formulario.controls['modelo'].setValue(this.vehiculo?.modelo);
-          this.formulario.controls['anio'].setValue(this.vehiculo?.anio);
-          this.formulario.controls['kilometraje'].setValue(this.vehiculo?.kilometraje);
-          this.formulario.controls['precio'].setValue(this.vehiculo?.precio);
-          this.formulario.controls['calificacion'].setValue(this.vehiculo?.calificacion);
-        } else {
-          Swal.fire({
-
-            title: "Mensaje",
-            text: "No se pudo cargar la informacion",
-            icon: "error"
-
-          });
-        }
+        this.vehiculo = data.data;
+  
+        this.formulario.controls['codigo'].setValue(this.vehiculo?.codigo);
+        this.formulario.controls['marca'].setValue(this.vehiculo?.marca);
+        this.formulario.controls['modelo'].setValue(this.vehiculo?.modelo);
+        this.formulario.controls['anio'].setValue(this.vehiculo?.anio);
+        this.formulario.controls['kilometraje'].setValue(this.vehiculo?.kilometraje);
+        this.formulario.controls['precio'].setValue(this.vehiculo?.precio);
+        this.formulario.controls['calificacion'].setValue(this.vehiculo?.calificacion);
+      }, error => {
+        Swal.fire({
+          title: "Mensaje",
+          text: "No se pudo cargar la informacion",
+          icon: "error"
+        });
       });
     });
   }
+  
 
 guardar(){
   if(this.formulario.valid){
@@ -82,9 +82,13 @@ guardar(){
   }
 }
 
-
-
   imprimir(data: any) {
     console.log('Calificacion:', data)
   }
+
+
+redirectToLista() {
+  console.log('redirige a lista')
+  this.router.navigateByUrl('/vehiculos');
 }
+};
