@@ -16,11 +16,12 @@ export class VehiculoService {
   };
 
   //Realiza una solicitud GET para obtener todos los vehículos. Retorna un Observable de tipo Vehiculo[].
-  getVehiculos(filtro?: string, rows?: number, page?: number): Observable<Respuesta> {
+  getVehiculos(filtro?: string, rows?: number, page?: number, filtroCodigo?:string): Observable<Respuesta> {
     let body = new HttpParams();
     body = filtro ? body.set('filtro', filtro) : body;
     body = rows ? body.set('rows', rows) : body;
     body = page ? body.set('page', page) : body;
+    body = filtroCodigo ? body.set('filtroCodigo', filtroCodigo) : body;
     console.log('Realizando solicitud GET para obtener todos los vehículos con los parámetros:', body.toString());
     return this.http.get<Respuesta>(this.baseUrl + 'vehiculos/', { params: body });
   }
@@ -43,15 +44,15 @@ export class VehiculoService {
   //Editar vehiculo. Realiza una solicitud PUT para actualizar la información de un vehículo existente.
   updateVehiculo(vehiculo: any, codigo: string) {
     console.log('Realizando solicitud PUT para actualizar un vehículo con id:', codigo);
-  
     return this.http.put<Respuesta>(this.baseUrl + 'vehiculo/' + vehiculo, codigo);
   }
+ 
   
-
   guardarNuevoVehiculo(vehiculo: any) {
     console.log('Realizando solicitud POST para guardar un nuevo vehículo:', vehiculo);
     return this.http.post<Respuesta>(this.baseUrl + 'vehiculo/', vehiculo, this.httpOptions);
   }
+  
   //Para eliminar vehiculos (si funciona). Realiza una solicitud DELETE para eliminar un vehículo por su código.
   eliminarVehiculo(codigo: string) {
 

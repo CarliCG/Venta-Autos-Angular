@@ -3,19 +3,11 @@ body {
 }
 
 .red-checkbox .form-check-input[type=checkbox]:checked {
-    background-color: #4527eb;
-}
-
-.red-checkbox .form-check-input:checked {
-    border-color: #4223ca;
-}
-
-.red-checkbox .form-check-input:checked:focus:before {
-    box-shadow: 0 0 0 13px #0a35e4;
+    background-color: #af863a;
 }
 
 .bg-dark-transparent {
-    background-color: rgba(0, 0, 0, 0.489); /* Cambia la opacidad según tus preferencias */
+    background-color: rgba(0, 0, 0, 0.352); /* Cambia la opacidad según tus preferencias */
 }
 
 .card-form-2 {
@@ -26,10 +18,10 @@ body {
 }
 
 .my-custom-btn {
-    background-color: #231e8d; /* Color de fondo */
-    color: #fff; /* Color del texto */
+    background-color: #000000; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
     border: 2px solid #ffffff; /* Borde */
-    border-radius: 20px; /* Bordes redondeados */
+    border-radius: 15px; /* Bordes redondeados */
     padding: 10px 20px; /* Espaciado interno */
     margin-bottom: 20px; /* Separación entre botones */
     display: block; /* Hacer que los botones ocupen todo el ancho del contenedor */

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VehiculoService } from '../../servicios/Vehiculo.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-PagVehiculoEditar',
@@ -16,7 +17,8 @@ export class PagVehiculoEditarComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private service: VehiculoService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     // Inicializar el formulario en el constructor
     this.form = this.formBuilder.group({
@@ -54,5 +56,10 @@ export class PagVehiculoEditarComponent implements OnInit {
       console.log(respuesta);
     })
   }
+  redirectToHome() {
+    this.router.navigateByUrl('/vehiculos');
+  }
+
 }
+
 

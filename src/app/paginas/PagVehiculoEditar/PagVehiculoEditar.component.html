@@ -1,11 +1,35 @@
-<form [formGroup]="form" (submit)="updateVehiculo()">
-<input type="text" placeholder="codigo" formControlName="codigo">
-<input type="text" placeholder="marca" formControlName="marca">
-<input type="text" placeholder="modelo" formControlName="modelo">
-<input type="text" placeholder="anio" formControlName="anio">
-<input type="text" placeholder="kilometraje" formControlName="kilometraje">
-<input type="text" placeholder="precio" formControlName="precio">
-<input type="text" placeholder="calificacion" formControlName="calificacion">
-<button type="submit">Actualizar</button>
-
+<form [formGroup]="form" (submit)="updateVehiculo()" class="row g-3">
+  <div class="col-md-6">
+    <label for="codigo" class="form-label">Código</label>
+    <input type="text" class="form-control" id="codigo" placeholder="Código" formControlName="codigo">
+  </div>
+  <div class="col-md-6">
+    <label for="marca" class="form-label">Marca</label>
+    <input type="text" class="form-control" id="marca" placeholder="Marca" formControlName="marca">
+  </div>
+  <div class="col-md-6">
+    <label for="modelo" class="form-label">Modelo</label>
+    <input type="text" class="form-control" id="modelo" placeholder="Modelo" formControlName="modelo">
+  </div>
+  <div class="col-md-6">
+    <label for="anio" class="form-label">Año</label>
+    <input type="text" class="form-control" id="anio" placeholder="Año" formControlName="anio">
+  </div>
+  <div class="col-md-6">
+    <label for="kilometraje" class="form-label">Kilometraje</label>
+    <input type="text" class="form-control" id="kilometraje" placeholder="Kilometraje" formControlName="kilometraje">
+  </div>
+  <div class="col-md-6">
+    <label for="precio" class="form-label">Precio</label>
+    <input type="text" class="form-control" id="precio" placeholder="Precio" formControlName="precio">
+  </div>
+  <div class="col-md-6">
+    <label for="calificacion" class="form-label">Calificación</label>
+    <input type="text" class="form-control" id="calificacion" placeholder="Calificación" formControlName="calificacion">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-dark me-2">Actualizar</button>
+    <button type="submit" class="btn btn-dark" (click)="redirectToHome()">Volver Atrás</button>
+  </div>
+  
 </form>

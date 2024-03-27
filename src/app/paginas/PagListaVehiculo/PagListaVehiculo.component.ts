@@ -13,11 +13,12 @@ export class PagListaVehiculoComponent implements OnInit {
   constructor(private vehiculoService: VehiculoService, private router: Router) { }
   public mostrarImagen = true;
   public listaVehiculos: Array<Vehiculo> = [];
-  private _filtro: string = '';
   public rows: number = 10;
   public page: number = 1;
   public pages: number = 0;
   public filtro: string = '';
+  
+
   
 
 

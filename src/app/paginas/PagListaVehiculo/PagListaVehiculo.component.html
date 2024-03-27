@@ -12,13 +12,6 @@
     </div>
 
     <div class="row">
-      <div class="col-12">
-        Filtrado por: {{filtro}}
-      </div>
-    </div>
-    <br>
-
-    <div class="row">
       <div class="col-3">
         <a class="btn btn-info" [routerLink]="['/vehiculo']">+ Nuevo Vehiculo</a>
       </div>
@@ -59,7 +52,8 @@
       <tbody>
         <ng-container *ngFor="let item of listaVehiculos">
           <tr>
-            <td><img [src]="item.foto" style="width: 80px;" *ngIf="mostrarImagen"></td>
+            <td><img [src]="item.foto" style="width: 100px;" *ngIf="mostrarImagen"></td>
+
             <td><a [routerLink]="['/vehiculos/'+item.codigo]">{{item.codigo}}</a></td>
             <td [innerText]="item.marca"></td>
             <td>{{item.modelo | lowercase | AEspacio:'-'}}</td>
@@ -68,11 +62,13 @@
             <td>{{item.precio | currency}}</td>
             <td>{{item.calificacion}}</td>
             <td>
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-primary" (click)="editarVehiculo(item.codigo)">Editar</button>
-                <button type="button" class="btn btn-btn-danger" (click)="eliminar(item.codigo)">Eliminar</button>
-              </div>
-            </td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <!-- Botón de Edición -->
+              <button type="button" class="btn btn-editar" (click)="editarVehiculo(item.codigo)">Editar</button>
+              <!-- Botón de Eliminación -->
+              <button type="button" class="btn btn-eliminar" (click)="eliminar(item.codigo)">Eliminar</button>
+            </div>
+          </td>
           </tr>
         </ng-container>
       </tbody>
